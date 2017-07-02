@@ -7,10 +7,10 @@ public class PigLatin {
 
     public static void main(String[] args) {
 
-            String choice = "y";
+        String choice = "y";
 
 
-        while (choice.equalsIgnoreCase ("y")) { // while loop to ask to continue
+        while (choice.equalsIgnoreCase("y")) { // while loop to ask to continue
 
             // 1. display welcome message
             System.out.println("Welcome to the Pig Latin Translator! \n ");
@@ -46,22 +46,27 @@ public class PigLatin {
     }
 
     /* Translate a word using consonant pig latin logic
-
      */
     public static String piggifiedConsonant(String userInput) {
 
-        int vowelFind = 0;
+        String vowels = "aeiou"; // list of vowels
+        String result = "";
+        int lastChar = 0; // last character before the vowel
 
-        for (int i = -1; i < vowelFind; i++) {
+        // while the last character before the vowel is less than the length
+        //and while there is no vowel in this character
 
-
+        while ((lastChar < userInput.length()) && !(vowels.contains("" + userInput.charAt(lastChar)))) {
+            String bVowel = ""; // this is the string of characters before the vowel
+            bVowel = bVowel + userInput.charAt(lastChar); // collects the letters before the vowel
+            lastChar++;
+            result = userInput.substring(lastChar) + bVowel + "ay";
         }
 
-        return userInput;
+        return result;
     }
 
     /* Translates a word using vowel pig latin logic
-
      */
     public static String piggifiedVowels(String userInput) {
 
@@ -73,7 +78,6 @@ public class PigLatin {
     }
 
     /* This determines if a word starts with a vowel or consonat
-
      */
 
     public static boolean isVowels(String userInput) {
